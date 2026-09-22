@@ -1,16 +1,18 @@
-import { Component, signal } from '@angular/core';
+import { Component, AfterViewInit, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { initFlowbite } from 'flowbite';
+import { Navbar } from './navbar/navbar';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, Navbar],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App {
-  protected readonly title = signal('Youstina-Edward-fri-3-9-online-Assignment14-01211281045');
-  ngOnInit(): void {
+export class App implements AfterViewInit {
+  protected readonly title = signal('Adasa');
+
+  ngAfterViewInit(): void {
     initFlowbite();
   }
 }

@@ -3,3 +3,24 @@
 @source "../node_modules/flowbite";
 
 @import 'tailwindcss';
+
+body {
+  font-family: "Tajawal", sans-serif;
+}
+
+@theme {
+  --color-primary: #f97316;
+  --color-primary-light: #fb923c;
+  --color-primary-dark: #ea580c;
+  --color-accent: #fbbf24;
+  --color-dark: #0a0a0a;
+  --color-dark-secondary: #111;
+  --color-dark-tertiary: #1a1a1a;
+  --color-dark-card: #161616;
+  --color-border: #262626;
+  --color-border-light: #333;
+}
+
+.btn-primary {
+  @apply flex justify-center items-center text-white px-8 py-4 font-semibold cursor-pointer transition-all duration-300 bg-linear-to-br from-primary to-primary-dark rounded-full hover:-translate-y-0.5;
+}
