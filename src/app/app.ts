@@ -1,8 +1,11 @@
+import { Category } from './Interfaces/category';
 import { Component, AfterViewInit, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { initFlowbite } from 'flowbite';
 import { Navbar } from './navbar/navbar';
 import { Footer } from './footer/footer';
+import { Post } from './Interfaces/post';
+import { SiteInfo } from './Interfaces/site-info';
 
 @Component({
   selector: 'app-root',

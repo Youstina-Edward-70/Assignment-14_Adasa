@@ -21,6 +21,39 @@ body {
   --color-border-light: #333;
 }
 
+::selection {
+  color: white;
+  background-color: var(--color-primary);
+}
+
 .btn-primary {
   @apply flex justify-center items-center text-white px-8 py-4 font-semibold cursor-pointer transition-all duration-300 bg-linear-to-br from-primary to-primary-dark rounded-full hover:-translate-y-0.5;
+}
+
+.btn-secondary {
+  @apply cursor-pointer font-semibold text-white bg-transparent px-8 py-4 border border-border-light rounded-full hover:text-primary hover:bg-primary/10 hover:border-primary transition-all duration-300;
+}
+
+.badge-pulse {
+  @apply inline-flex items-center gap-2 mb-8 text-sm font-medium text-primary px-4 py-2 bg-primary/10 border border-primary/30 rounded-full before:w-1.5 before:h-1.5 before:bg-primary before:rounded-full before:animate-pulse;
+}
+
+.badge-pulse>span:first-child {
+  @apply relative flex h-2 w-2;
+}
+
+.badge-pulse>span:first-child span:first-child {
+  @apply animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-500 opacity-75;
+}
+
+.badge-pulse>span:first-child span:last-child {
+  @apply relative inline-flex rounded-full h-2 w-2 bg-orange-500;
+}
+
+.badge-pulse>span:last-child {
+  @apply text-sm font-medium text-neutral-300;
+}
+
+.gradient-text {
+  @apply bg-linear-135 from-primary to-accent bg-clip-text text-transparent;
 }

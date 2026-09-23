@@ -1,0 +1,42 @@
+<section
+  class="py-24 bg-dark relative overflow-hidden before:absolute before:top-0 before:left-1/2 before:-translate-x-1/2 before:w-150 before:h-75 before:bg-orange-500/10 before:rounded-full before:blur-3xl">
+  <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="bg-dark-card border border-border rounded-3xl p-8 md:p-12 lg:p-16 text-center">
+      <div
+        class="w-16 h-16 flex items-center justify-center bg-linear-to-br from-orange-500 to-orange-600 rounded-2xl mx-auto mb-6 text-white">
+        <i class="fa-regular fa-envelope"></i>
+      </div>
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+        اشترك في
+        <span class="gradient-text">نشرتنا الإخبارية</span>
+      </h2>
+      <p class="text-neutral-400 text-lg mb-8 max-w-xl mx-auto">احصل على نصائح التصوير الحصرية ودروس جديدة مباشرة في
+        بريدك الإلكتروني</p>
+      <form class="flex flex-col md:flex-row gap-3 max-w-lg mx-auto mb-6">
+        <input type="email" placeholder="أدخل بريدك الإلكتروني"
+          class="flex-1 px-5 py-4 rounded-xl bg-dark border border-border focus:outline-none focus:border-orange-500/50 text-white placeholder:text-neutral-500 transition-all duration-300">
+        <button type="submit"
+          class="px-8 py-4 bg-linear-to-r from-orange-500 to-orange-600 text-white font-semibold rounded-xl hover:from-orange-600 hover:to-orange-700 transition-all duration-300 cursor-pointer">
+          اشترك الآن</button>
+      </form>
+      <div class="flex flex-wrap items-center justify-center gap-4 text-sm text-neutral-500">
+        <div class="flex items-center gap-4">
+          <div class="flex -space-x-2 space-x-reverse">
+            @for (author of firstThreeAuthors; track author.name) {
+            <img [src]="author.avatar" [alt]="author.name" class="w-8 h-8 rounded-full border-2 border-dark-card ">
+            }
+          </div>
+          <span>
+            انضم لـ
+            <span class="text-white font-medium">+10,000</span>
+            مصور
+          </span>
+        </div>
+        <span class="max-sm:hidden text-border">•</span>
+        <span>بدون إزعاج</span>
+        <span class="max-sm:hidden text-border">•</span>
+        <span>إلغاء الاشتراك في أي وقت</span>
+      </div>
+    </div>
+  </div>
+</section>

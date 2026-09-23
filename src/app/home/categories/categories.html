@@ -1,0 +1,35 @@
+<section class="py-24 bg-dark border-y border-border relative">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <div class="badge-pulse mb-4">
+        <span>
+          <span></span>
+          <span></span>
+        </span>
+        التصنيفات
+      </div>
+      <h2 class="text-4xl tracking-tight md:text-5xl lg:text-6xl font-bold text-white">استكشف حسب الموضوع</h2>
+      <p class="mt-4 text-lg leading-relaxed text-neutral-400 max-w-lg mx-auto">اعثر على محتوى مصمم حسب اهتماماتك</p>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+      @for (category of categories; track category.name) {
+      <a [routerLink]="`/blog?category=${category.name}`"
+        class="group relative block p-6 rounded-2xl bg-dark-card border border-border hover:border-orange-500/30 hover:-translate-y-1 transition-all duration-500 overflow-hidden before:absolute before:inset-0 before:bg-linear-to-br before:from-orange-500 before:to-yellow-500 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500">
+        <div class="relative z-10">
+          <span
+            class="w-12 h-12 bg-orange-500/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-white/20 border border-orange-500/20 group-hover:border-transparent transition-all duration-300 text-xl text-orange-500 group-hover:text-white">
+            <i class="fa-solid" [class]="category.icon"></i>
+          </span>
+          <h3 class="font-bold text-lg text-white mb-1 transition-all duration-300">{{category.name}}</h3>
+          <p class="text-sm text-neutral-500 group-hover:text-white/80 transition-all duration-300">{{category.count}}
+            مقالة</p>
+          <span
+            class="absolute top-6 left-6 w-8 h-8 rounded-full bg-border flex items-center justify-center opacity-0 group-hover:opacity-100 group-hover:bg-white/20 text-white transition-all duration-300">
+            <i class="fa-solid fa-angle-left"></i>
+          </span>
+        </div>
+      </a>
+      }
+    </div>
+  </div>
+</section>

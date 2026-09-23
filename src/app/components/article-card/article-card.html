@@ -1,0 +1,44 @@
+<a [routerLink]="`/blog/${post.slug}`"
+  class="block group rounded-3xl overflow-hidden bg-dark-card border border-border transition-all duration-500">
+  <div
+    class="relative h-52 overflow-hidden before:absolute before:inset-0 before:bg-linear-to-t before:from-black/60 before:via-transparent before:to-transparent before:opacity-0 before:group-hover:opacity-100 before:transition-all before:duration-500">
+    <img [alt]="post.title"
+      class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+      [src]="post.image">
+    <span
+      class="absolute top-4 right-4 z-10 px-3 py-1 bg-dark/80 backdrop-blur-sm text-white text-xs font-semibold rounded-full border border-border-light">
+      {{post.category}}
+    </span>
+  </div>
+  <div class="p-6">
+    <div class="flex items-center gap-3 text-sm text-neutral-500 mb-3">
+      <span class="flex items-center gap-1">
+        <i class="fa-regular fa-clock"></i>
+        {{post.readTime}}
+      </span>
+      <span class="w-1 h-1 bg-neutral-600 rounded-full"></span>
+      <span>{{post.date}}</span>
+    </div>
+    <h3
+      class="text-xl font-bold text-white mb-3 group-hover:text-orange-500 transition-colors duration-300 line-clamp-2 leading-tight">
+      {{post.title}}
+    </h3>
+    <p class="text-neutral-400 mb-5 line-clamp-2 text-sm leading-relaxed">
+      {{post.excerpt}}
+    </p>
+    <div class="flex items-center justify-between pt-4 border-t border-border">
+      <div class="flex items-center gap-3">
+        <img [alt]="post.author.name" class="w-9 h-9 rounded-full object-cover ring-2 ring-border"
+          [src]="post.author.avatar">
+        <div>
+          <p class="text-sm font-medium text-white">{{post.author.name}}</p>
+          <p class="text-xs text-neutral-500">{{post.author.role}}</p>
+        </div>
+      </div>
+      <div
+        class="w-8 h-8 rounded-full bg-orange-500/10 flex items-center justify-center group-hover:bg-orange-500 transition-colors duration-300 border border-orange-500/20 group-hover:border-transparent text-orange-500 group-hover:text-white">
+        <i class="fa-solid fa-angle-left"></i>
+      </div>
+    </div>
+  </div>
+</a>
