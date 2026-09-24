@@ -1,5 +1,60 @@
 <main>
-  <app-header />
+  <app-header [badgeText]="'مرحباً بك في عدسة'"
+    [description]="'انغمس في أسرار المحترفين ونصائح عملية لتطوير مهاراتك في التصوير.'" [sectionStyle]="'min-h-screen'"
+    [badgeStyle]="'text-neutral-300'" [titleStyle]="'text-5xl md:text-6xl lg:text-7xl leading-tight tracking-tight'"
+    [descriptionStyle]="'md:text-2xl max-w-2xl mb-10 leading-relaxed'">
+    <ng-container pingPoint>
+      <span></span>
+      <span></span>
+    </ng-container>
+    <ng-container title>
+      اكتشف
+      <span class="gradient-text">فن</span>
+      <br>
+      التصوير الفوتوغرافي
+    </ng-container>
+
+    <div class="flex flex-col sm:flex-row justify-center gap-4 mb-16">
+      <a class="btn-primary inline-flex items-center justify-center gap-2 group" href="/blog">
+        <span>استكشف المقالات</span>
+        <i class="fa-solid fa-arrow-left"></i>
+      </a>
+      <a class="btn-secondary inline-flex items-center justify-center gap-2" href="/about">
+        <i class="fa-solid fa-info-circle"></i>
+        <span>اعرف المزيد</span>
+      </a>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
+      <div
+        class="bg-dark-card/80 border border-border rounded-3xl p-4 hover:scale-105 transition-transform duration-300">
+        <i class="fa-solid fa-newspaper text-2xl text-orange-500 mb-1"></i>
+        <p class="text-2xl md:text-3xl font-bold gradient-text">
+          +50</p>
+        <p class="text-neutral-500 text-sm">مقالة</p>
+      </div>
+      <div
+        class="bg-dark-card/80 border border-border rounded-3xl p-4 hover:scale-105 transition-transform duration-300">
+        <i class="fa-solid fa-users text-2xl text-orange-500 mb-1"></i>
+        <p class="text-2xl md:text-3xl font-bold gradient-text">
+          +10ألف</p>
+        <p class="text-neutral-500 text-sm">قارئ</p>
+      </div>
+      <div
+        class="bg-dark-card/80 border border-border rounded-3xl p-4 hover:scale-105 transition-transform duration-300">
+        <i class="fa-solid fa-folder-open text-2xl text-orange-500 mb-1"></i>
+        <p class="text-2xl md:text-3xl font-bold gradient-text">4
+        </p>
+        <p class="text-neutral-500 text-sm">تصنيفات</p>
+      </div>
+      <div
+        class="bg-dark-card/80 border border-border rounded-3xl p-4 hover:scale-105 transition-transform duration-300">
+        <i class="fa-solid fa-pen-nib text-2xl text-orange-500 mb-1"></i>
+        <p class="text-2xl md:text-3xl font-bold gradient-text">6
+        </p>
+        <p class="text-neutral-500 text-sm">كاتب</p>
+      </div>
+    </div>
+  </app-header>
   <app-choosen-articles [posts]="firstThreePosts" />
   <app-categories [categories]="categories" />
   <app-new-articles [newPosts]="secondThreePosts" />

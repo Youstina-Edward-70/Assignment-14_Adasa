@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Header } from './header/header';
+import { Header } from '../components/header/header';
 import { ChoosenArticles } from './choosen-articles/choosen-articles';
 import { Post } from '../Interfaces/post';
 import { Categories } from './categories/categories';

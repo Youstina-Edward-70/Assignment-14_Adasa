@@ -39,7 +39,7 @@ body {
 }
 
 .badge-pulse>span:first-child {
-  @apply relative flex h-2 w-2;
+  @apply relative flex;
 }
 
 .badge-pulse>span:first-child span:first-child {
@@ -51,7 +51,7 @@ body {
 }
 
 .badge-pulse>span:last-child {
-  @apply text-sm font-medium text-neutral-300;
+  @apply text-sm font-medium;
 }
 
 .gradient-text {

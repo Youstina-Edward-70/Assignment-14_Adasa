@@ -1,1 +1,41 @@
-<p>about works!</p>
+<main>
+  <app-header [badgeText]="'من نحن'"
+    [description]="'مدونة متخصصة في فن التصوير الفوتوغرافي، نشارك معكم أسرار المحترفين ونصائح عملية لتطوير مهاراتكم. نحن شغوفون بمشاركة المعرفة ومساعدة المصورين على تنمية مهاراتهم من خلال محتوى عالي الجودة.'"
+    [titleStyle]="'text-4xl md:text-5xl lg:text-6xl'" [descriptionStyle]="'max-w-3xl mb-12 leading-relaxed'">
+    <ng-container pingPoint>
+      <span></span>
+      <span></span>
+    </ng-container>
+    <ng-container title>
+      مهمتنا هي
+      <span class="gradient-text">الإعلام والإلهام</span>
+    </ng-container>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+      <div class="bg-dark-card/80 border border-border rounded-3xl p-6">
+        <i class="fa-solid fa-users text-2xl text-orange-500 mb-1"></i>
+        <p class="text-3xl font-bold gradient-text">
+          +2مليون</p>
+        <p class="text-neutral-500 text-sm">قارئ شهرياً</p>
+      </div>
+      <div class="bg-dark-card/80 border border-border rounded-3xl p-6">
+        <i class="fa-solid fa-newspaper text-2xl text-orange-500 mb-1"></i>
+        <p class="text-3xl font-bold gradient-text">
+          +500</p>
+        <p class="text-neutral-500 text-sm">مقالة منشورة</p>
+      </div>
+      <div class="bg-dark-card/80 border border-border rounded-3xl p-6">
+        <i class="fa-solid fa-pen-nib text-2xl text-orange-500 mb-1"></i>
+        <p class="text-3xl font-bold gradient-text">+50
+        </p>
+        <p class="text-neutral-500 text-sm">كاتب خبير</p>
+      </div>
+      <div class="bg-dark-card/80 border border-border rounded-3xl p-6">
+        <i class="fa-solid fa-book-open text-2xl text-orange-500 mb-1"></i>
+        <p class="text-3xl font-bold gradient-text">+15
+        </p>
+        <p class="text-neutral-500 text-sm">تصنيف</p>
+      </div>
+    </div>
+  </app-header>
+</main>

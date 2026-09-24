@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { Header } from '../components/header/header';
 
 @Component({
   selector: 'app-about',
-  imports: [],
+  imports: [Header],
   templateUrl: './about.html',
   styleUrl: './about.css',
 })
-export class About {}
+export class About { }

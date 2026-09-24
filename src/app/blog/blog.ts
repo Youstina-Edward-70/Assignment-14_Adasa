@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { Header } from '../components/header/header';
 
 @Component({
   selector: 'app-blog',
-  imports: [],
+  imports: [Header],
   templateUrl: './blog.html',
   styleUrl: './blog.css',
 })
-export class Blog {}
+export class Blog { }
