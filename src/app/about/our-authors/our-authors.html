@@ -1,0 +1,18 @@
+<section class="py-20 bg-dark">
+  <div class="max-w-6xl myContainer">
+    <div class="text-center mb-16">
+      <span class="badge-pulse mb-4!">
+        فريقنا
+      </span>
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">تعرف على كتابنا</h2>
+      <p class="text-lg text-neutral-400 max-w-2xl mx-auto">
+        فريقنا من المصورين والكتاب ذوي الخبرة شغوفون بمشاركة معرفتهم مع المجتمع.
+      </p>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      @for (author of authors; track $index) {
+      <app-author-card [author]="author" />
+      }
+    </div>
+  </div>
+</section>

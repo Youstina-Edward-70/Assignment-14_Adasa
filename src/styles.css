@@ -19,6 +19,13 @@ body {
   --color-dark-card: #161616;
   --color-border: #262626;
   --color-border-light: #333;
+
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-3xl: 24px;
 }
 
 ::selection {
@@ -56,4 +63,8 @@ body {
 
 .gradient-text {
   @apply bg-linear-135 from-primary to-accent bg-clip-text text-transparent;
+}
+
+.myContainer {
+  @apply mx-auto px-4 sm:px-6 lg:px-8;
 }
