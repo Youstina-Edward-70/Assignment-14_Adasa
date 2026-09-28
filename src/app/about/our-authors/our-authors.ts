@@ -1,6 +1,8 @@
 import { Author } from './../../Interfaces/author';
-import { Component, Input } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { AuthorCard } from '../../components/author-card/author-card';
+import { PostsService } from '../../Services/posts-service';
+import { Post } from '../../Interfaces/post';
 
 @Component({
   selector: 'app-our-authors',
@@ -9,5 +11,7 @@ import { AuthorCard } from '../../components/author-card/author-card';
   styleUrl: './our-authors.css',
 })
 export class OurAuthors {
-  @Input({ 'required': true }) authors!: Author[];
+  private readonly postsService = inject(PostsService);
+  posts: Post[] = this.postsService.posts;
+  authors: Author[] = this.posts.map(post => post.author);
 }

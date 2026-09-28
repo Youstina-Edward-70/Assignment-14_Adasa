@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { PostsService } from './../../Services/posts-service';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -8,5 +9,6 @@ import { RouterLink } from '@angular/router';
   styleUrl: './contact-us.css',
 })
 export class ContactUs {
-  email: string = "hello@adasah.com";
+  private readonly postsService = inject(PostsService);
+  email: string = this.postsService.siteInfo.email;
 }

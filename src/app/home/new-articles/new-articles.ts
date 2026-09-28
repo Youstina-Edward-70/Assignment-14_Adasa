@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Post } from '../../Interfaces/post';
 import { ArticleCard } from '../../components/article-card/article-card';
 import { RouterLink } from '@angular/router';
+import { PostsService } from '../../Services/posts-service';
 
 @Component({
   selector: 'app-new-articles',
@@ -10,5 +11,6 @@ import { RouterLink } from '@angular/router';
   styleUrl: './new-articles.css',
 })
 export class NewArticles {
-  @Input() newPosts!: Post[];
+  private readonly postsService = inject(PostsService);
+  newPosts: Post[] = this.postsService.posts.slice(3, 6);
 }

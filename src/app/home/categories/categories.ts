@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { PostsService } from './../../Services/posts-service';
+import { Component, inject } from '@angular/core';
 import { Category } from '../../Interfaces/category';
 import { RouterLink } from '@angular/router';
 
@@ -9,5 +10,6 @@ import { RouterLink } from '@angular/router';
   styleUrl: './categories.css',
 })
 export class Categories {
-  @Input() categories!: Category[];
+  private readonly postsService = inject(PostsService);
+  categories: Category[] = this.postsService.categories;
 }

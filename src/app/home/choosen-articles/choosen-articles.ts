@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Post } from '../../Interfaces/post';
 import { RouterLink } from '@angular/router';
+import { PostsService } from '../../Services/posts-service';
 
 @Component({
   selector: 'app-choosen-articles',
@@ -9,5 +10,6 @@ import { RouterLink } from '@angular/router';
   styleUrl: './choosen-articles.css',
 })
 export class ChoosenArticles {
-  @Input() posts!: Post[];
+  private readonly postsService = inject(PostsService);
+  posts: Post[] = this.postsService.posts.slice(0, 3);
 }

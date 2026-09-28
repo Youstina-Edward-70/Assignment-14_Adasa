@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Author } from '../../Interfaces/author';
+import { PostsService } from '../../Services/posts-service';
 
 @Component({
   selector: 'app-subscripe',
@@ -8,5 +9,6 @@ import { Author } from '../../Interfaces/author';
   styleUrl: './subscripe.css',
 })
 export class Subscripe {
-  @Input() firstThreeAuthors!: Author[];
+  private readonly postsService = inject(PostsService);
+  firstThreeAuthors: Author[] = this.postsService.posts.slice(0, 3).map(post => post.author);
 }
