@@ -9,4 +9,6 @@
       <span class="gradient-text">مقالاتنا</span>
     </ng-container>
   </app-header>
+  <app-filter-search #filterSearchRef />
+  <app-posts (onSearchValueChange)="filterSearchRef.setSearchInputValue($event)" />
 </main>

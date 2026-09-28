@@ -1,0 +1,30 @@
+<section class="sticky top-20 z-40 bg-dark/90 backdrop-blur-xl border-b border-border">
+  <div class="max-w-7xl myContainer py-4">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+      <div class="relative w-full md:w-80">
+        <input #searchInput [(ngModel)]="searchTerm" (input)="blogService.onSearchChange(searchTerm)" type="search"
+          placeholder="ابحث في المقالات..."
+          class="bg-dark-card border border-border outline-none rounded-xl text-white w-full px-5 py-3 pe-12 focus:border-primary focus:ring-3 focus:ring-orange-500/10 placeholder:text-neutral-500 transition-all duration-300">
+        <span class="absolute inset-e-4 top-1/2 -translate-y-1/2 w-5 h-5 text-neutral-500">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </span>
+      </div>
+      <div class="flex flex-wrap justify-center gap-2">
+        <button (click)="blogService.selectCategory('الكل')"
+          class="px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 cursor-pointer" [class]="blogService.selectedCategory === 'الكل'?
+          'bg-linear-to-r from-orange-500 to-orange-600 text-white'
+          :'bg-dark-card text-neutral-400 border border-border hover:border-orange-500/30'">
+          جميع المقالات
+        </button>
+        @for (cat of categories; track $index) {
+        <button (click)="blogService.selectCategory(cat.name)"
+          class="px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 cursor-pointer" [class]="blogService.selectedCategory === cat.name?
+          'bg-linear-to-r from-orange-500 to-orange-600 text-white'
+          :'bg-dark-card text-neutral-400 border border-border hover:border-orange-500/30'">
+          {{cat.name}}
+        </button>
+        }
+      </div>
+    </div>
+  </div>
+</section>

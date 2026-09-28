@@ -1,0 +1,85 @@
+<section class="max-w-7xl myContainer py-12">
+  <div class="mb-8 flex items-center justify-between">
+    <p class="text-neutral-400">
+      عرض
+      <span class="font-bold text-white">{{blogService.filteredPosts.length}}</span>
+      مقالات
+      @if(blogService.selectedCategory !== 'الكل'){
+      في
+      <span class="font-bold text-orange-500">{{blogService.selectedCategory}}</span>
+      }
+    </p>
+    <div class="flex items-center gap-2">
+      <div class="flex items-center bg-dark-card border border-border rounded-xl p-1">
+        <button (click)="showStyle='grid'"
+          class="flex items-center justify-center w-7 h-7 p-2 rounded-lg transition-all duration-300 cursor-pointer"
+          [class]="showStyle === 'grid'? 'bg-orange-500 text-white' : 'text-neutral-400 hover:text-white'"
+          title="عرض شبكي">
+          <i class="fa-solid fa-border-all"></i>
+        </button>
+        <button (click)="showStyle='list'"
+          class="flex items-center justify-center w-7 h-7 p-2 rounded-lg transition-all duration-300 cursor-pointer"
+          [class]="showStyle === 'list'? 'bg-orange-500 text-white' : 'text-neutral-400 hover:text-white'"
+          title="عرض قائمة">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+      @if(blogService.selectedCategory !== 'الكل' || blogService.searchTerm){
+      <button (click)="blogService.selectCategory('الكل')" (click)="blogService.onSearchChange('')"
+        (click)="sendSearchValue('')"
+        class="text-sm text-neutral-500 hover:text-orange-500 flex items-center gap-1 transition-all duration-300 cursor-pointer">
+        <i class="fa-solid fa-close"></i>
+        مسح الفلاتر
+      </button>
+      }
+    </div>
+  </div>
+
+  <!-- Posts List -->
+  <div [class]="showStyle === 'grid'?'grid md:grid-cols-2 lg:grid-cols-3 gap-8':'flex flex-col gap-6'">
+    @for (post of blogService.currentPagePosts; track post.id) {
+    <app-article-card [post]="post" [showStyle]="showStyle" />
+    }@empty {
+    <div class="col-span-full w-full flex flex-col items-center py-20">
+      <div
+        class="w-24 h-24 bg-dark-card border border-border rounded-full flex items-center justify-center mx-auto mb-6 text-5xl text-neutral-500">
+        <i class="fa-regular fa-face-frown"></i>
+      </div>
+      <h3 class="text-2xl font-bold text-white mb-3">لا توجد مقالات</h3>
+      <p class="text-neutral-400 mb-6">حاول تعديل البحث أو الفلتر للعثور على ما تبحث عنه.</p>
+      <button (click)="blogService.selectCategory('الكل')" (click)="blogService.onSearchChange('')"
+        (click)="sendSearchValue('')" class="btn-primary flex items-center gap-2">
+        <i class="fa-solid fa-arrows-rotate"></i>
+        إعادة تعيين الفلاتر
+      </button>
+    </div>
+    }
+  </div>
+
+  <!-- Pagination -->
+  @if(blogService.totalPages > 1){
+  <div class="flex justify-center items-center gap-2 mt-12">
+    <button (click)="blogService.prevPage()" [disabled]="blogService.currentPagePagination === 1"
+      class="p-3 rounded-xl border border-border transition-all duration-300"
+      [class]="blogService.currentPagePagination===1?'bg-dark text-neutral-600 cursor-not-allowed':'bg-dark-card text-white hover:border-orange-500/50 hover:bg-dark-tertiary cursor-pointer'">
+      <i class="fa-solid fa-chevron-right"></i>
+    </button>
+
+    @for (page of blogService.pageNumbers; track page) {
+    <button (click)="blogService.goToPage(page)"
+      class="min-w-11 h-11 rounded-xl text-sm font-medium transition-all duration-300 cursor-pointer"
+      [class]="blogService.currentPagePagination===page?'bg-linear-to-r from-orange-500 to-orange-600 text-white':'bg-dark-card text-neutral-400 border border-border hover:border-orange-500/50 hover:text-white'">
+      {{page}}
+    </button>
+    }
+
+    <button (click)="blogService.nextPage()" [disabled]="blogService.currentPagePagination === blogService.totalPages"
+      class="p-3 rounded-xl border border-border transition-all duration-300"
+      [class]="blogService.currentPagePagination === blogService.totalPages?'bg-dark text-neutral-600 cursor-not-allowed':'bg-dark-card text-white hover:border-orange-500/50 hover:bg-dark-tertiary cursor-pointer'">
+      <i class="fa-solid fa-chevron-left"></i>
+    </button>
+  </div>
+  <p class="text-center text-neutral-500 mt-4 text-sm">صفحة {{blogService.currentPagePagination}} من
+    {{blogService.totalPages}}</p>
+  }
+</section>

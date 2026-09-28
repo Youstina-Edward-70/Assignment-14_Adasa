@@ -9,5 +9,6 @@ import { RouterLink } from '@angular/router';
   styleUrl: './article-card.css',
 })
 export class ArticleCard {
-  @Input() post!: Post;
+  @Input({ 'required': true }) post!: Post;
+  @Input() showStyle: 'grid' | 'list' = 'grid';
 }
