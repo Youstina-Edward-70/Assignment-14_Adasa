@@ -1,4 +1,4 @@
-<a [routerLink]="`/blog/${post.slug}`"
+<a [routerLink]="['/blog', post.slug]"
   class="group h-full overflow-hidden bg-dark-card border border-border flex flex-col transition-all duration-500"
   [class]="showStyle === 'grid'? 'rounded-3xl hover:border-border-light hover:-translate-y-1' : 'rounded-2xl hover:border-orange-500/30 md:flex-row'">
   <div

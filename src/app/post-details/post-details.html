@@ -1,0 +1,248 @@
+<main class="min-h-screen bg-dark">
+  <!-- header -->
+  <section class="relative h-[60vh] min-h-125">
+    <div class="absolute inset-0 overflow-hidden">
+      <img [src]="post.image" [alt]="post.title" class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-linear-to-r from-dark/30 to-transparent"></div>
+      <div class="absolute inset-0 bg-linear-to-t from-dark via-dark/50 to-transparent"></div>
+    </div>
+
+    <div class="absolute top-8 inset-x-8">
+      <nav class="flex" aria-label="Breadcrumb">
+        <ol
+          class="inline-flex items-center gap-2 px-4 py-2 bg-black/30 backdrop-blur-md rounded-full text-sm border border-white/10">
+          <li>
+            <a routerLink="/home" class="text-white/70 hover:text-white transition-colors duration-300">
+              <i class="fa-solid fa-home"></i>
+            </a>
+          </li>
+          <li class="flex items-center gap-1.5">
+            <i class="fa-solid fa-chevron-left text-white/30 text-xs"></i>
+            <a routerLink="/blog" class="text-white/70 hover:text-white transition-colors duration-300">المدونة</a>
+          </li>
+          <li aria-current="page" class="flex items-center gap-1.5">
+            <i class="fa-solid fa-chevron-left text-white/30 text-xs"></i>
+            <span class="text-orange-400 font-medium truncate max-w-50">{{post.category}}</span>
+          </li>
+        </ol>
+      </nav>
+    </div>
+
+    <div class="absolute bottom-0 inset-x-0 p-8 md:p-12">
+      <div class="max-w-5xl mx-auto">
+        <div class="flex flex-wrap items-center gap-3 mb-6">
+          <a routerLink="/blog" [queryParams]="{category:post.category}"
+            (click)="blogService.selectCategory(post.category)"
+            class="px-4 py-2 bg-orange-500 text-white text-sm font-bold rounded-full hover:bg-orange-600 transition-colors duration-300">
+            {{post.category}}
+          </a>
+          <div class="flex items-center gap-4 text-white/70 text-sm">
+            <span class="flex items-center gap-2">
+              <i class="fa-regular fa-calendar"></i>
+              {{post.date}}
+            </span>
+            <span class="flex items-center gap-2">
+              <i class="fa-regular fa-clock"></i>
+              {{post.readTime}}
+            </span>
+          </div>
+        </div>
+        <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight max-w-4xl">{{post.title}}
+        </h1>
+        <div class="flex items-center gap-4 p-4 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 w-fit">
+          <img [src]="post.author.avatar" [alt]="post.author.name"
+            class="w-14 h-14 object-cover rounded-full ring-2 ring-orange-500/50">
+          <div>
+            <p class="text-white font-bold">{{post.author.name}}</p>
+            <p class="text-white/60 text-sm">{{post.author.role}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-7xl myContainer py-12">
+    <!-- post content -->
+    <div class="grid lg:grid-cols-[1fr_300px] gap-12">
+      <div class="order-2 lg:order-1">
+        <div
+          class="p-6 bg-linear-to-r from-orange-500/10 to-yellow-500/5 rounded-2xl border border-orange-500/20 mb-10">
+          <p class="text-lg text-neutral-200 leading-relaxed italic">{{post.excerpt}}</p>
+        </div>
+        <div>
+          <p class="text-neutral-300 leading-relaxed mb-6 text-lg">{{brief}}</p>
+          @for (section of sections; track section.id) {
+          <div [id]="section.id" class="mt-14 scroll-mt-28">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-6 flex items-center gap-4">
+              <span
+                class="flex items-center justify-center w-10 h-10 bg-orange-500/10 rounded-xl border border-orange-500/30 text-orange-500">
+                <i class="fa-solid fa-camera"></i>
+              </span>
+              {{section.title}}
+            </h2>
+            <p class="text-neutral-300 leading-relaxed text-lg">{{section.content}}</p>
+          </div>
+          }
+        </div>
+
+        <div class="mt-14 p-6 bg-dark-secondary rounded-2xl border border-border">
+          <div class="flex items-center gap-3 mb-4">
+            <span
+              class="flex items-center justify-center w-10 h-10 bg-orange-500/10 rounded-xl border border-orange-500/30 text-orange-500">
+              <i class="fa-solid fa-tags"></i>
+            </span>
+            <h3 class="text-white font-bold">الوسوم</h3>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            @for (tag of post.tags; track tag) {
+            <span
+              class="px-4 py-2 bg-dark-tertiary text-neutral-400 text-sm rounded-full border border-border hover:border-orange-500/50 hover:text-orange-500 transition-colors duration-300 cursor-pointer">#{{tag}}</span>
+            }
+          </div>
+        </div>
+
+        <div
+          class="mt-6 p-6 bg-dark-secondary rounded-2xl border border-border flex items-center justify-between flex-wrap gap-4">
+          <div class="flex items-center gap-3">
+            <span
+              class="flex items-center justify-center w-10 h-10 bg-orange-500/10 rounded-xl border border-orange-500/30 text-orange-500">
+              <i class="fa-solid fa-share-nodes"></i>
+            </span>
+            <h3 class="text-white font-bold">شارك المقال</h3>
+          </div>
+          <div class="flex gap-2">
+            <button
+              class="flex items-center justify-center w-11 h-11 bg-dark-tertiary rounded-xl border border-border text-neutral-400 hover:bg-[#1da1f2] hover:text-white hover:border-transparent transition-all duration-300">
+              <i class="fa-brands fa-x-twitter"></i>
+            </button>
+            <button
+              class="flex items-center justify-center w-11 h-11 bg-dark-tertiary rounded-xl border border-border text-neutral-400 hover:bg-[#0077b5] hover:text-white hover:border-transparent transition-all duration-300">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </button>
+            <button
+              class="flex items-center justify-center w-11 h-11 bg-dark-tertiary rounded-xl border border-border text-neutral-400 hover:bg-[#25d366] hover:text-white hover:border-transparent transition-all duration-300">
+              <i class="fa-brands fa-whatsapp"></i>
+            </button>
+            <button
+              class="flex items-center justify-center w-11 h-11 bg-dark-tertiary rounded-xl border border-border text-neutral-400 hover:bg-orange-500 hover:text-white hover:border-transparent transition-all duration-300">
+              <i class="fa-solid fa-link"></i>
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="mt-6 p-8 bg-linear-to-br from-dark-card to-dark-secondary rounded-2xl border border-border flex flex-col sm:flex-row items-center sm:items-start gap-6">
+          <img [src]="post.author.avatar" [alt]="post.author.name"
+            class="w-24 h-24 object-cover rounded-2xl ring-4 ring-orange-500/20">
+          <div class="text-center sm:text-right flex-1">
+            <span class="text-xs text-orange-500 font-semibold tracking-wider">كاتب المقال</span>
+            <h3 class="text-xl font-bold text-white mt-1">{{post.author.name}}</h3>
+            <p class="text-neutral-500 text-sm mb-3">{{post.author.role}}</p>
+            <p class="text-neutral-400 text-sm leading-relaxed">مصور محترف شغوف بمشاركة المعرفة والخبرات في عالم التصوير
+              الفوتوغرافي.</p>
+          </div>
+        </div>
+      </div>
+
+      <aside class="order-1 lg:order-2 lg:sticky lg:top-24 h-fit space-y-6">
+        <div class="p-6 bg-dark-secondary rounded-2xl border border-border">
+          <div class="flex items-center gap-3 mb-5">
+            <span
+              class="flex items-center justify-center w-10 h-10 bg-orange-500/10 rounded-xl border border-orange-500/30 text-orange-500">
+              <i class="fa-solid fa-list"></i>
+            </span>
+            <h3 class="text-white font-bold">محتويات المقال</h3>
+          </div>
+          <nav class="space-y-2">
+            @for (section of sections; track section.id) {
+            <a [routerLink]="[]" [fragment]="section.id"
+              class="group flex items-center gap-3 p-3 rounded-xl text-neutral-400 hover:text-orange-500 hover:bg-orange-500/5 transition-all duration-300">
+              <span
+                class="flex items-center justify-center w-6 h-6 bg-dark-tertiary rounded-lg text-xs font-bold text-neutral-500 group-hover:bg-orange-500/10 group-hover:text-orange-500 transition-colors duration-300">
+                {{$index + 1}}
+              </span>
+              {{section.title}}
+            </a>
+            }
+          </nav>
+        </div>
+
+        <div class="p-6 bg-dark-secondary rounded-2xl border border-border grid grid-cols-2 gap-4">
+          <div class="text-center p-4 bg-dark rounded-xl">
+            <i class="fa-regular fa-clock text-orange-500 text-xl mb-2"></i>
+            <p class="text-white font-bold">{{post.readTime}}</p>
+            <p class="text-neutral-500 text-xs">وقت القراءة</p>
+          </div>
+          <div class="text-center p-4 bg-dark rounded-xl">
+            <i class="fa-regular fa-calendar text-orange-500 text-xl mb-2"></i>
+            <p class="text-white font-bold">{{post.date}}</p>
+            <p class="text-neutral-500 text-xs">تاريخ النشر</p>
+          </div>
+        </div>
+
+        <div
+          class="p-6 bg-linear-to-br from-orange-500/10 to-yellow-500/5 rounded-2xl border border-orange-500/20 text-center">
+          <span
+            class="flex items-center justify-center mx-auto w-14 h-14 bg-orange-500/20 rounded-2xl mb-4 text-orange-500 text-xl">
+            <i class="fa-solid fa-envelope"></i>
+          </span>
+          <h3 class="text-white font-bold mb-2">لا تفوّت جديدنا</h3>
+          <p class="text-neutral-400 text-sm mb-4">اشترك للحصول على أحدث المقالات</p>
+          <a routerLink="/blog"
+            class="block w-full py-3 bg-orange-500 text-white font-semibold rounded-xl hover:bg-orange-600 transition-colors duration-300 text-center">تصفح
+            المزيد</a>
+        </div>
+      </aside>
+    </div>
+
+    <!-- related posts -->
+    <div class="mt-20 pt-12 border-t border-border">
+      <div class="flex items-center justify-between mb-10">
+        <div class="flex items-center gap-4">
+          <span
+            class="flex items-center justify-center w-12 h-12 bg-orange-500/10 rounded-2xl border border-orange-500/30 text-orange-500 text-xl">
+            <i class="fa-solid fa-images"></i>
+          </span>
+          <div>
+            <h3 class="text-2xl text-white font-bold">مقالات قد تعجبك</h3>
+            <p class="text-neutral-500 text-sm">استكشف المزيد من المحتوى المميز</p>
+          </div>
+        </div>
+        <a routerLink="/blog"
+          class="group hidden sm:flex items-center gap-2 text-orange-500 hover:text-orange-400 transition-colors duration-300">
+          عرض الكل
+          <i class="fa-solid fa-arrow-left group-hover:-translate-x-1 transition-transform duration-300"></i>
+        </a>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        @for (related of relatedPosts; track related.id) {
+        <a [routerLink]="['/blog', related.slug]"
+          class="group bg-dark-secondary rounded-2xl overflow-hidden border border-border hover:border-orange-500/30 transition-all duration-500">
+          <div class="relative h-48 overflow-hidden">
+            <img [src]="related.image" [alt]="related.title"
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+            <div class="absolute inset-0 bg-linear-to-t from-dark-secondary to-transparent"></div>
+            <span class="absolute top-4 inset-s-4 px-3 py-1 bg-orange-500 text-white text-xs font-bold rounded-full">
+              {{post.category}}
+            </span>
+          </div>
+
+          <div class="p-5">
+            <h3
+              class="font-bold text-white group-hover:text-orange-500 line-clamp-2 mb-3 transition-colors duration-300">
+              {{related.title}}
+            </h3>
+            <div class="flex items-center justify-between text-sm text-neutral-500">
+              <span class="flex items-center gap-2">
+                <img [src]="related.author.avatar" [alt]="related.author.name" class="w-6 h-6 rounded-full">
+                {{related.author.name}}
+              </span>
+              <span>{{related.readTime}}</span>
+            </div>
+          </div>
+        </a>
+        }
+      </div>
+    </div>
+  </section>
+</main>

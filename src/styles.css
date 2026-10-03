@@ -28,6 +28,10 @@ body {
   --radius-3xl: 24px;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 ::selection {
   color: white;
   background-color: var(--color-primary);

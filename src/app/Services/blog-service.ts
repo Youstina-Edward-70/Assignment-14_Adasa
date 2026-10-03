@@ -3,7 +3,9 @@ import { PostsService } from './posts-service';
 import { Post } from '../Interfaces/post';
 import { catType } from '../Interfaces/category';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class BlogService {
   private readonly postsService = inject(PostsService);
 
@@ -87,5 +89,15 @@ export class BlogService {
       this.updateCurrentPagePosts();
       this.scrollToTop();
     }
+  }
+
+  getPostBySlug(slug: string): Post | undefined {
+    return this.postsService.posts.find(post => post.slug === slug);
+  }
+
+  getRelatedPosts(currentPostId: number, category: catType): Post[] {
+    return this.postsService.posts
+      .filter(post => post.category === category && post.id !== currentPostId)
+      .slice(0, 3);
   }
 }

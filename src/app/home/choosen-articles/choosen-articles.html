@@ -23,7 +23,7 @@
       @for (post of posts; track post.id) {
       <div
         class="group relative bg-dark-card rounded-3xl overflow-hidden border border-border hover:border-orange-500/30 transition-all duration-500">
-        <a class="block" [routerLink]="`/blog/${post.slug}`">
+        <a class="block" [routerLink]="['/blog', post.slug]">
           <div class="grid md:grid-cols-2 gap-0">
             <div class="relative h-72 md:h-100 overflow-hidden">
               <img [alt]="post.title"
